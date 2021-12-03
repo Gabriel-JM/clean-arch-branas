@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "jest --no-cache --runInBand --passWithNoTests"
+    "test": "jest --no-cache --runInBand --passWithNoTests",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
