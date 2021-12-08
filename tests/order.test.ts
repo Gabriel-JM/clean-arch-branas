@@ -39,3 +39,16 @@ test('should create an order with 3 items and a discount coupon', () => {
   
   expect(total).toBe(128)
 })
+
+test('should create an order with 3 items and an expired discount coupon', () => {
+  const cpf = '839.435.452-10'
+  const order = new Order(cpf, new Date('2021-12-10'))
+  order.addItem(new Item(1, 'Música', 'CD', 30), 3)
+  order.addItem(new Item(2, 'Vídeo', 'DVD', 50), 1)
+  order.addItem(new Item(3, 'Vídeo', 'VHS', 10), 2)
+  order.addCoupon(new Coupon('VALE20', 20, new Date('2021-12-01')))
+  
+  const total = order.getTotal()
+  
+  expect(total).toBe(160)
+})
