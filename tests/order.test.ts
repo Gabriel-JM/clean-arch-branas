@@ -52,3 +52,15 @@ test('should create an order with 3 items and an expired discount coupon', () =>
   
   expect(total).toBe(160)
 })
+
+test('should create an order with 3 items with calculated freight', () => {
+  const cpf = '839.435.452-10'
+  const order = new Order(cpf)
+  order.addItem(new Item(4, 'Instrumentos musicais', 'Guitarra', 1000, 100, 30, 10, 3), 1)
+  order.addItem(new Item(5, 'Instrumentos musicais', 'Amplificador', 5000, 100, 50, 50, 20), 1)
+  order.addItem(new Item(6, 'Acessórios', 'Cabo', 30, 10, 10, 10, 0.9), 3)
+  
+  const freight = order.getFreight()
+  
+  expect(freight).toBe(257)
+})
