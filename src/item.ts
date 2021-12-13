@@ -9,4 +9,16 @@ export class Item {
     readonly length = 0,
     readonly weight = 0
   ) {}
+
+  getVolume() {
+    return this.width/100 * this.height/100 * this.length/100
+  }
+
+  getDensity() {
+    return this.weight / this.getVolume()
+  }
+
+  calculateFreight() {
+    
+  }
 }
