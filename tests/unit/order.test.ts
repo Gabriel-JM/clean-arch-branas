@@ -1,8 +1,8 @@
-import { Coupon } from '../src/coupon'
-import { DefaultFreightCalculator } from '../src/default-freight-calculator'
-import { FixedFreightCalculator } from '../src/fixed-freight-calculator'
-import { Item } from '../src/item'
-import { Order } from '../src/order'
+import { Coupon } from '../../src/domain/entities/coupon'
+import { DefaultFreightCalculator } from '../../src/domain/entities/default-freight-calculator'
+import { FixedFreightCalculator } from '../../src/domain/entities/fixed-freight-calculator'
+import { Item } from '../../src/domain/entities/item'
+import { Order } from '../../src/domain/entities/order'
 
 test('should create an empty order with a valid CPF', () => {
   const cpf = '839.435.452-10'

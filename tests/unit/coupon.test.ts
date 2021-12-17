@@ -1,4 +1,4 @@
-import { Coupon } from '../src/coupon'
+import { Coupon } from '../../src/domain/entities/coupon'
 
 test('should create a valid discount coupon', () => {
   const coupon = new Coupon('VALE20', 20, new Date('2021-12-10'))
