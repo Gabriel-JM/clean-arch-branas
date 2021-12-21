@@ -6,7 +6,7 @@ import { Order } from '../../src/domain/entities/order'
 
 test('should create an empty order with a valid CPF', () => {
   const cpf = '839.435.452-10'
-  const order = new Order(cpf, new DefaultFreightCalculator())
+  const order = new Order(cpf, undefined, new DefaultFreightCalculator())
   const total = order.getTotal()
   
   expect(total).toBe(0)
@@ -14,12 +14,12 @@ test('should create an empty order with a valid CPF', () => {
 
 test('should try to create an empty order with an invalid CPF', () => {
   const cpf = '111.111.111-11'
-  expect(() => new Order(cpf, new DefaultFreightCalculator())).toThrow(new Error('Invalid CPF'))
+  expect(() => new Order(cpf, undefined, new DefaultFreightCalculator())).toThrow(new Error('Invalid CPF'))
 })
 
 test('should create an order with 3 items', () => {
   const cpf = '839.435.452-10'
-  const order = new Order(cpf, new DefaultFreightCalculator())
+  const order = new Order(cpf, undefined, new DefaultFreightCalculator())
   order.addItem(new Item(1, 'Música', 'CD', 30), 3)
   order.addItem(new Item(2, 'Vídeo', 'DVD', 50), 1)
   order.addItem(new Item(3, 'Vídeo', 'VHS', 10), 2)
@@ -31,7 +31,7 @@ test('should create an order with 3 items', () => {
 
 test('should create an order with 3 items and a discount coupon', () => {
   const cpf = '839.435.452-10'
-  const order = new Order(cpf, new DefaultFreightCalculator())
+  const order = new Order(cpf, undefined, new DefaultFreightCalculator())
   order.addItem(new Item(1, 'Música', 'CD', 30), 3)
   order.addItem(new Item(2, 'Vídeo', 'DVD', 50), 1)
   order.addItem(new Item(3, 'Vídeo', 'VHS', 10), 2)
@@ -44,7 +44,7 @@ test('should create an order with 3 items and a discount coupon', () => {
 
 test('should create an order with 3 items and an expired discount coupon with default strategy', () => {
   const cpf = '839.435.452-10'
-  const order = new Order(cpf, new DefaultFreightCalculator(), new Date('2021-12-10'))
+  const order = new Order(cpf, new Date('2021-12-10'))
   order.addItem(new Item(1, 'Música', 'CD', 30), 3)
   order.addItem(new Item(2, 'Vídeo', 'DVD', 50), 1)
   order.addItem(new Item(3, 'Vídeo', 'VHS', 10), 2)
@@ -57,7 +57,7 @@ test('should create an order with 3 items and an expired discount coupon with de
 
 test('should create an order with 3 items with calculated freight with fixed strategy', () => {
   const cpf = '839.435.452-10'
-  const order = new Order(cpf, new FixedFreightCalculator())
+  const order = new Order(cpf, undefined, new FixedFreightCalculator())
   order.addItem(new Item(4, 'Instrumentos musicais', 'Guitarra', 1000, 100, 30, 10, 3), 1)
   order.addItem(new Item(5, 'Instrumentos musicais', 'Amplificador', 5000, 100, 50, 50, 20), 1)
   order.addItem(new Item(6, 'Acessórios', 'Cabo', 30, 10, 10, 10, 0.9), 3)

@@ -1,3 +1,5 @@
+import { PlaceOrder } from '../../src/application/usecases/place-order'
+
 test('should place an order', async () => {
   const placeOrder = new PlaceOrder()
   const input = {
@@ -10,7 +12,7 @@ test('should place an order', async () => {
     date: new Date('2021-12-10')
   }
 
-  const output = placeOrder.execute(input)
+  const output = await placeOrder.execute(input)
 
   expect(output.total).toBe(1000)
 })

@@ -1,5 +1,6 @@
 import { Coupon } from './coupon';
 import { CPF } from './cpf'
+import { DefaultFreightCalculator } from './default-freight-calculator'
 import { FreightCalculator } from './freight-calculator'
 import { Item } from './item';
 import { OrderItem } from './order-item';
@@ -12,8 +13,8 @@ export class Order {
 
   constructor(
     cpf: string,
-    readonly freightCalculator: FreightCalculator,
-    readonly date: Date = new Date()
+    readonly date: Date = new Date(),
+    readonly freightCalculator: FreightCalculator = new DefaultFreightCalculator(),
   ) {
     this.cpf = new CPF(cpf);
   }
